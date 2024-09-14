@@ -1,13 +1,10 @@
-import { SortingStr } from './functions/FunctionRules.js';
-import { ReversedString } from './functions/FunctionRules.js';
+import ProviderComponent from './Context/LightDarkThemeContext.jsx';
 
 function App() {
   return (
-    <>
-      {/*<SortingStr string={'hello world'} />*/}
-      <ReversedString string={'hello world'} />
-    </>
+    <div>
+      <ProviderComponent />
+    </div>
   );
 }
-
 export default App;
