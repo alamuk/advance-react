@@ -1,9 +1,9 @@
-import ProviderComponent from './Context/LightDarkThemeContext.jsx';
+import GoalsSet from './state/goalSet/GoalsSet.jsx';
 
 function App() {
   return (
     <div>
-      <ProviderComponent />
+      <GoalsSet />
     </div>
   );
 }

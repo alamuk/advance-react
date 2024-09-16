@@ -1,6 +1,8 @@
-(sorting in Js)[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort]
-(Sorting String)[https://www.geeksforgeeks.org/sort-a-string-in-javascript/]
+#React important Link: 
 
+1. [Sorting in Js](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+2. [Sorting String](https://www.geeksforgeeks.org/sort-a-string-in-javascript/)
+3. [State](https://react.dev/learn/choosing-the-state-structure)
 
 
 ## Input
@@ -119,4 +121,71 @@ return useContext(BooksContext);
 
 export default useBookContext;
 ```
+
+## useMemo Hook
+If your component renders the same result given the same props, 
+you can wrap it in a call to React.memo for a performance boost by memorizing the result.
+
+Memoization is a programming technique that speeds up performance by caching the return values of expensive function calls.
+
+This means that React will skip rendering the component, and reuse the last rendered result.
+A good rule of thumb is to wrap the React component right after your context provider with React.memo.
+
+we need to remember that in JavaScript, the below assertion is true:
+
+{a: ‘hi’, b: ‘bye’} !== {a: ‘hi’, b: ‘bye’} // true
+
+That is because object comparison in JavaScript is done by reference. 
+Every time a new re-render happens in the App component, a new instance of the value object is created, 
+resulting in the provider performing a comparison against its previous value and determining that it has changed, 
+hence informing all context consumers that they should re-render.
+
+This problem can be resolved by using the useMemo hook from React as follows. 
+
+https://legacy.reactjs.org/docs/hooks-reference.html#usememo
+
+
+# useHooks()
+
+# destructuring 
+### for array, we can put any name of the item when destructuring 
+### for object, we have to use exact name (`key`) when destructuring. 
+- when the structuring objects, you have to d structure a property of an object using that exact properties name as the name of the d structured variable. 
+- This makes objects a lot stricter in terms of what you can name your D structure variables. 
+- For that reason, `react uses` the `array data structure` for the `used state hooks` return value.
+
+
+The correct way to update the state object in React when using useState
+The suggested approach for updating the state object in React when using useState is to `copy the state object` and `then update the copy`.
+
+This usually involves using the `spread operator (...)`
+
+Specifically, the TypeError is: "Assignment to constant variable".
+
+To reiterate, the proper way of working with state when it's saved as an object is to:
+
+Copy the old state object using the spread (...) operator and save it into a new variable and
+
+Pass the new variable to the state-updating function
+
+
+### why we do shallow copy when updated. 
+The set form data function accepts a shallow clone of the `previous value` of the form data variable. 
+That's the form data variable with the spread operator before it here. 
+Remember that we `should not work` with the form data variable `directly` which is why, we are making a copy. 
+This is because of `how React optimizes its virtual DOM`. 
+Keeping `state immutable` makes it possible `to compare a previous version` of the virtual DOM with the updated version more efficiently and cost effectively.
+
+
+
+
+### dynamic update of the key and value: through an event 
+for object update: 
+-----------------
+`setUpdate({...pre, [e.target.name]: e.target.value});`
+
+here, we are updating the object any name it has, and it values from input. 
+so dynamically, object for name/ `key`:  update `[e.target.name]`
+for value: `e.target.value`
+
 
