@@ -1,9 +1,9 @@
-import GoalsSet from './state/goalSet/GoalsSet.jsx';
+import AwaitAsync from './state/fetchData/AwaitAsync';
 
 function App() {
   return (
     <div>
-      <GoalsSet />
+      <AwaitAsync />
     </div>
   );
 }
