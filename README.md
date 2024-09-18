@@ -217,7 +217,7 @@ for value: `e.target.value`
 
 ---
 
-#### 1. sideEffect:
+## 1. sideEffect:
 
 If the function calls another function inside it to get the data from Api, outside the React app to work properly.
 The console log call makes the function impure as it's a call to a browser, application programming interface or API.
@@ -242,9 +242,9 @@ console.log('hello');
 
 - it has a callback function `()=>` and array`[]` for dependency
 
-- Three ways we can use it.
+- #### Three ways we can use it.
 - 1. without [] dependency array, it will call every time component render.
-     By default, if no second argument is provided to the useEffect function, the effect will run after every render.
+    By default, if no second argument is provided to the useEffect function, the effect will run after every render.
 
 - 2. with [] dependency array but empty, it will run the function inside it just once when the component first renders.
 
@@ -253,7 +253,7 @@ console.log('hello');
 #### 2. pure function: no side effect
 
 - always return the same output. take props input
--
+
 
 #### 3. impure Function: has side effect
 
@@ -448,8 +448,8 @@ If this works out as described above, the length of the someStateVariable would 
 
 ### Fetch data: steps:
 
-1. the fetch() function initially fetches data from API,
-2. then it retrieves a respond from API in JSON formate
+1. the fetch() function initially fetches data from the API,
+2. then it retrieves a response from API in JSON format
 3. finally, update the state variable by `setUpdate()` with returned data.
 4. then catch any error from data fetching.
 
@@ -462,11 +462,60 @@ If this works out as described above, the length of the someStateVariable would 
 - talk with one function to another function /or/ one app to another app /or/ frontend to back end / frontend to server- we need API
   API makes the link of two parties.
 
-we check when we are designing the API are:
+## we check when we are designing the API are:
+----------------------------------------------
 
-1. type safety - means we are getting what we are expecting. like we are wanting a photo - we are actually getting a photo.
-2. things does not breaking anything.
-3. to make the API need to be balance - between future and present. anticipate about future but also focus problem in front of you now and how you can address it effectively.
-4. keep it simple. not do over think , not to put too many thing , not to make too much fancy - using complicated and complex design pattern. simplicity is very important
+1. type of safety means we are getting what we are expecting. like we are wanting a photo—we are actually getting a photo.
+2. things do not break anything.
+3. to make the API need to be balance—between future and present. expect the future but also focus problem in front of you now and how you can address it effectively.
+4. keep it simple. not do overthinking, not to put too many things, not to make too much fancy - using complicated and complex design pattern. simplicity is very important
 5. readability is a big plus
-6. make it statable
+6. make it stable
+
+
+# useReducer()
+----------------
+useState vs useReducer: 
+
+* useState hooks and useReducer do the same this — `they update the state`. 
+
+### useState hook limitation: 
+-----------------------------
+* the useState hook may become cumbersome, if you have a complex state logic that involves `multiple sub-values` or `when the next state depends on the previous one`.
+note:
+* `In these situations they useReducer hook can provide a much better alternative.`
+
+useReducer() 
+-----------
+* this is a superpower of superpower `useState`
+* They `useState` hook starts with an `initial state`, but they `useReducer` hook gets a `reducer function` in addition to the initial state. 
+* This is beneficial because the reducer functions `second argument` is the `action object`. 
+* the `action object` has multiple type values, and `based on each of these types values`, you can invoke the `dispatch function` to perform a specific operation.
+* The `reducer function` takes in the `previous state` and an `action` and `returns the new state`. The action type determines the specific action of the reducer. `Actions can have any form`.
+* `Instead of using setState` like the useState hook, we use the `dispatch method` of the useReducer hook. 
+* This accepts an object literal with a single property called `type set` to a `matching action datatype` whose `behavior is defined` inside the reducer function.
+``` 
+say the brand little lemon restaurant is growing in popularity and demand. 
+As a result, `keeping track of expenses` is becoming an issue. 
+Far, they have been calculating the income and outgoings manually as they `sell meals` to their customers and `buy ingredients` to replenish the stock. 
+Little lemon is looking for a solution to this `using React` in order to `keep track of expenses in their app and reduce the burden on their staff`. 
+Because using the useState hook would make the solution to this unnecessarily extensive. 
+This is a perfect opportunity to implement the useReducer hook in order to -
+simply keep track of the cost of buying ingredients and the income generated from selling the finished meals to the customers. 
+```
+
+```javascript
+function reducer(state, action) {
+  if(action.type === 'hello') return {}
+  
+}
+
+initialState = {
+  name: 'Shah'
+}
+
+const [state, dispatch] = useReducer(reducer, initialState);
+
+// FOR JSX 
+dispatch({type: 'hello'})
+```

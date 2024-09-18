@@ -1,9 +1,9 @@
-import AwaitAsync from './state/fetchData/AwaitAsync';
+import Tracking from './state/useReducer/Tracking.jsx';
 
 function App() {
   return (
     <div>
-      <AwaitAsync />
+      <Tracking />
     </div>
   );
 }
