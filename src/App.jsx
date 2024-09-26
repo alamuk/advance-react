@@ -1,9 +1,9 @@
-import Tracking from './state/useReducer/Tracking.jsx';
+import SpreadButton from './button/spreadButton/SpreadButton.jsx';
 
 function App() {
   return (
     <div>
-      <Tracking />
+      <SpreadButton />
     </div>
   );
 }

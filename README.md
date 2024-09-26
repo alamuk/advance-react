@@ -366,7 +366,7 @@ Q-2.How to provide an example in plain JavaScript of the process.
 
 ### For Async process:
 
-- Brower is a post office
+- Browser is a post office
 - js is a clerk - post office worker.
 - all other clerks will refer as browser/ web API - fetch api, axios api, where js is not wait for this.
 - fetch api is for call a browser API from java script.
@@ -519,3 +519,221 @@ const [state, dispatch] = useReducer(reducer, initialState);
 // FOR JSX 
 dispatch({type: 'hello'})
 ```
+
+
+
+### When to choose useReducer vs useState
+-----------------------------------------
+The `useState hook` is best used on `less complex` data.
+
+While it's possible to use any kind of a data structure when working with useState, it's better to use it with primitive data types, such as strings, numbers, or booleans.
+
+The `useReducer hook` is best used on `more complex data`, specifically, arrays or objects.
+
+While this rule is simple enough, there are situations where you might be working with a simple object and still decide to use the useState hook.
+
+Such a decision might stem from the simple fact that working with useState can sometimes feel easier than thinking about how the state is controlled when working with useReducer.
+
+It might help conceptualizing this dilemma as a gradual scale, there is the useState hook with primitive data types and simple use cases, such as toggling a variable on or off.
+
+- there is the useReducer hook used to control state of large state-holding objects.
+
+There's no clear-cut point on this spectrum:- `"If my state object has three or more properties, I'll use the useReducer hook"`.
+
+Sometimes such a statement might make sense, and other times it might not.
+
+What's important to remember is to keep your code simple to understand, collaborate on, contribute to, and build from.
+
+One `negative characteristic` of `useState` is that it often gets hard to maintain as the state gets more complex.
+
+On the flip side, a `negative characteristic` of `useReducer` is that it requires `more prep work to begin with`. 
+There's more setup involved. However, once this setup is completed, it gets easier to extend the code based on new requirements.
+
+So this is the way we have learned about the decision-making process: -  when we are choosing between useReducer and useState for working with different types of data.
+
+
+
+### JSX 
+-------
+- React is used to describe UI appearance. it is an extension to js 
+- React produces—nothing more-pure: HTML, CSS, and JavaScript
+- elements of React are the final represented of HTML—it is a plain object-this object has two property - types and props
+- types are type of nodes/ components/ functions/ HTML tag in the tree. 
+- props are all the property the components receive as a single object. 
+- example of jsx to elements below
+
+JSX
+```jsx
+
+const buttonTitle = 'Submit';
+
+return (
+  <button className='button button-blue'>
+    <span>
+      {buttonTitle}
+    </span>
+  </button>
+    
+)
+```
+
+To 
+
+Elements: 
+```
+{
+  type: 'button',
+  props: {
+    className: 'button button-blue',
+    children: {
+      type: 'span',
+      children: 'Submit',
+    }
+  }
+}
+```
+### Why is building a high-performing application so importantly? 
+---------------------------------------------------------------
+- performance means—`not responsive, not fast enough, not interactive`.
+- performance is the key thing when we are building any application. 
+- we might think that the colorful or feature is important than performance. 
+- performance not be that visible as you do see the feature.
+
+
+### How does React help software engineers build high-performing application? 
+-----------------------------------------------------------------------------
+- it is localized the changes by making components 
+- try to find out—why this component is so slow, why it is taking so long, 
+- how we can refactor the component to make faster. 
+- maybe we can delegate some of the computation to the back-end, so that we are not incurring this cost on the user on the front-end.
+- by checking when it is developed. 
+- stability 
+- usability 
+- completeness 
+- release
+- feedback cycle
+
+how we can achieve that: 
+- designing 
+- delegating the tasks 
+- using tools like memoization,
+
+
+
+## Component composition:
+
+How we can design the React app
+-----------------------------------------------------------
+- one of the most important part `Component Composition`
+1. Children's props.
+2. containment: it refers to the fact that some components don't know their children ahead of the time. also can be described as generic boxes. like a Dialog or Alert. 
+ it will pop up some generic box. specialization will be doing the rest. 
+3. Specialization: it defines components as being `special cases` of other components. for example, the conformationDialog(){} is a special case of dialog.
+   means we use is for user to show what will happen when a user takes this action.
+4. robust and reusable components
+
+
+
+### Spread Operator: 
+--------------------
+* meaning—`copping or cloning` the props of the elements. 
+* `in Javasript` `spread operator` for `props` can be used for any data type - like - array, object, event string 
+* But `in React` as the props are object - react mostly used for an object type.  
+* `coping and merging` are the `two main operations` we may perform with the operator. 
+* it can be amended or merge new props. 
+* first we need to do spreed the object, then we can change or modify or add new items on it. 
+* if some properties completely are New, it will be before spread Object.
+* if we want to change the existing properties, then we need to spread Object first then need to put change item from the property with value. 
+
+```jsx
+const order = {
+  id: 1,
+  userName: 'shah', 
+  itemOrder: 'Pizza Margarita', 
+  price: '$30.00'
+}
+
+// order - spread operator
+const orderCopy = {...order}
+
+```
+- Order copy and merge 
+
+```jsx
+const orderAmend = {
+  ...order,
+  itemOrder: 'Pizza Roquito'
+}
+```
+
+without spread operator in a component 
+```jsx
+function OrderList() {
+  return <Order id='1' userName='shah' itemOrder='Pizza Roquito' price=price: '$30.00'/>
+}
+```
+
+with spread operator
+
+```jsx
+function OrderList() {
+  return <Order {...order}/>
+}
+```
+
+
+## Most Important Generic Functionality:
+----------------------------------------
+* Cross-cutting concern in Application
+* components and reusing behavior
+* Pattern of common functionality in React 
+* Higher order Components 
+-------------------------------------
+1. permission roles
+2. handling errors
+3. Logging 
+
+### Higher Order Components (HOC)
+---------------------------
+- `higher order components` transforms a components into another component. 
+- it enhances or extends the capabilities of the component provided. 
+`const EnhancedComponents = higherOrderComponent(WrappedComponent)`
+- benefit of HOC
+-------------------
+1. it enhances or extends the capabilities of the component provided. 
+2. we can define the logic in a single place and share it across many components and keep the unchanged and stateless
+
+
+
+
+### Testing: 
+------------
+1. it finds the bugs 
+2. it ensures the quality of the software we develop 
+3. reduce the user complain and save time and money 
+
+Best Practices
+--------------
+1. The tests need to avoid implementation details of your components.
+2. React is just a tool, and the final users will have no notion that React exists at all. 
+3. Rather than dealing with instances of rendered React components, tests should work with actual `DOM nodes`. 
+4. What is actual things it brings to DOM
+5. resemble the way the software is used, the more confidence they can give us.
+6. Finally, the tests to be maintainable in the long term. 
+
+Two tools for texting
+---------------------
+1. jest
+   - Jest is a JavaScript test runner that lets you access an artificial DOM called jsdom. While jsdom is only an approximation of how the browser works, it is often good enough for testing React components.
+2. React testing library 
+   - React Testing Library is designed to fulfill all testing best practices out of the box, so that you are able to focus on the business logic your tests need to run assertions on.
+
+--------------------
+jest: 
+* Mocking Feature 
+* good iteration speed
+
+React testing library
+---------------------
+- set utilities 
+- fulfills testing best practice 

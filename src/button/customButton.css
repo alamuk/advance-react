@@ -1,0 +1,8 @@
+.custom-button:hover {
+    opacity: 0.9;
+}
+
+.custom-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
